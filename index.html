@@ -1,6 +1,6 @@
 <html>
     <head>
-        <script src="html5-qrcode.min.js"></script>
+        <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
         <script>
             function onScanSuccess(decodedText, decodedResult)
             {
@@ -12,11 +12,13 @@
                
             }
 
-            var htmlQrcodeScanner = new Html5QrcodeScanner("reader", { fps: 10, qrbox: 250 })
-            htmlQrcodeScanner.render(onScanSuccess, onScanError)
+            window.onload = () => {
+                var htmlQrcodeScanner = new Html5QrcodeScanner("reader", { fps: 10, qrbox: {width: 250, height: 250} }, false)
+                htmlQrcodeScanner.render(onScanSuccess, onScanError)
+            }
         </script>
     </head>
     <body style="background-color: black;">
-        <div style="width: 500px" id="reader"></div>
+        <div id="reader" style="width: 500px"></div>
     </body>
 </html>
