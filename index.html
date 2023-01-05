@@ -4,7 +4,8 @@
         <script>
             function onScanSuccess(decodedText, decodedResult)
             {
-                alert(`Scan result : ${decodedText}`)//, decodedResult)
+                window.location.href = "modelViewer.html"
+                //alert(`Scan result : ${decodedText}`)//, decodedResult)
             }
 
             function onScanError(errorMessage) 
@@ -19,6 +20,6 @@
         </script>
     </head>
     <body style="background-color: black;">
-        <div id="reader" style="width: 500px"></div>
+        <div id="reader" style="width: 100%; height: 100%"></div>
     </body>
 </html>
