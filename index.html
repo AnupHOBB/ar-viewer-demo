@@ -1,14 +1,22 @@
 <html>
+    <head>
+        <script src="html5-qrcode.min.js"></script>
+        <script>
+            function onScanSuccess(decodedText, decodedResult)
+            {
+                alert(`Scan result : ${decodedText}`)//, decodedResult)
+            }
+
+            function onScanError(errorMessage) 
+            {
+               
+            }
+
+            var htmlQrcodeScanner = new Html5QrcodeScanner("reader", { fps: 10, qrbox: 250 })
+            htmlQrcodeScanner.render(onScanSuccess, onScanError)
+        </script>
+    </head>
     <body style="background-color: black;">
-        <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-        <model-viewer src="models3d/JamBottle.glb" 
-                    style="width:100%; height:100%" 
-                    camera-controls touch-action="pan-y"
-                    ar 
-                    ar-placement="floor"
-                    ios-src="models/JamBottle.usdz" 
-                    ar ar-modes="webxr scene-viewer quick-look"
-                    ar-scale="fixed">
-        </model-viewer>
+        <div style="width: 500px" id="reader"></div>
     </body>
 </html>
