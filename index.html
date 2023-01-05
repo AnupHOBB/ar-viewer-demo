@@ -5,17 +5,15 @@
             function onScanSuccess(decodedText, decodedResult)
             {
                 window.location.href = "modelViewer.html"
-                //alert(`Scan result : ${decodedText}`)//, decodedResult)
-            }
-
-            function onScanError(errorMessage) 
-            {
-               
             }
 
             window.onload = () => {
-                var htmlQrcodeScanner = new Html5QrcodeScanner("reader", { fps: 10, qrbox: {width: 250, height: 250} }, false)
-                htmlQrcodeScanner.render(onScanSuccess, onScanError)
+                /* var htmlQrcodeScanner = new Html5QrcodeScanner("reader", { fps: 10, qrbox: {width: 250, height: 250} }, false)
+                htmlQrcodeScanner.render(onScanSuccess, (e)=>{}) */
+
+                const html5QrCode = new Html5Qrcode("reader")
+                const config = { fps: 10 }
+                html5QrCode.start({ facingMode: "user" }, config, onScanSuccess)
             }
         </script>
     </head>
