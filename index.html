@@ -5,8 +5,7 @@
                 const modelViewer = document.querySelector("model-viewer");
                 window.switchSrc = (element, name) => 
                 {
-                    alert("pressed image")
-                    const base = "models3d/" + name;
+                    const base = "https://anuphobb.github.io/ar-viewer-demo/models3d/" + name;
                     modelViewer.src = base + '.glb';
                     const slides = document.querySelectorAll(".slide");
                     slides.forEach((element) => {element.classList.remove("selected");});
