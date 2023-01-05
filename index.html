@@ -1,7 +1,56 @@
 <html>
     <body style="background-color: black;">
         <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-        <style>
+
+        
+        <model-viewer src="https://modelviewer.dev/assets/ShopifyModels/Chair.glb" poster="https://modelviewer.dev/assets/ShopifyModels/Chair.webp" shadow-intensity="1" ar camera-controls touch-action="pan-y" alt="A 3D model carousel">
+  
+            <button slot="ar-button" id="ar-button">
+              View in your space
+            </button>
+          
+            <div id="ar-prompt">
+              <img src="https://modelviewer.dev/assets/hand.png">
+            </div>
+          
+            <button id="ar-failure">
+              AR is not tracking!
+            </button>
+          
+            <div class="slider">
+              <div class="slides">
+                <button class="slide selected" onclick="switchSrc(this, 'Chair')" style="background-image: url('https://modelviewer.dev/assets/ShopifyModels/Chair.webp');">
+          
+                </button><button class="slide" onclick="switchSrc(this, 'Mixer')" style="background-image: url('https://modelviewer.dev/assets/ShopifyModels/Mixer.webp');">
+          
+                </button><button class="slide" onclick="switchSrc(this, 'GeoPlanter')" style="background-image: url('https://modelviewer.dev/assets/ShopifyModels/GeoPlanter.webp');">
+                
+                </button><button class="slide" onclick="switchSrc(this, 'ToyTrain')" style="background-image: url('https://modelviewer.dev/assets/ShopifyModels/ToyTrain.webp');">
+                
+                </button><button class="slide" onclick="switchSrc(this, 'Canoe')" style="background-image: url('https://modelviewer.dev/assets/ShopifyModels/Canoe.webp');">    
+              </button></div>
+            </div>
+          </model-viewer>
+          
+          <script type="module">
+            const modelViewer = document.querySelector("model-viewer");
+          
+            window.switchSrc = (element, name) => {
+              const base = "https://modelviewer.dev/assets/ShopifyModels/" + name;
+              modelViewer.src = base + '.glb';
+              modelViewer.poster = base + '.webp';
+              const slides = document.querySelectorAll(".slide");
+              slides.forEach((element) => {element.classList.remove("selected");});
+              element.classList.add("selected");
+            };
+          
+            document.querySelector(".slider").addEventListener('beforexrselect', (ev) => {
+              // Keep slider interactions from affecting the XR scene.
+              ev.preventDefault();
+            });
+          </script>
+          
+          <style>
             /* This keeps child nodes hidden while the element loads */
             :not(:defined) > * {
               display: none;
@@ -82,23 +131,50 @@
             model-viewer[ar-tracking="not-tracking"] > #ar-failure {
               display: block;
             }
-        </style>
-        <model-viewer src="https://anuphobb.github.io/ar-viewer-demo/models3d/Cereal001.glb" 
-                    shadow-intensity="1" 
-                    style="width:100%; height:100%" 
-                    ar camera-controls touch-action="pan-y">
-
-                    <div id="ar-prompt">
-                        <img src="https://modelviewer.dev/assets/hand.png">
-                    </div>
-
-                    <button id="ar-failure">
-                        AR is not tracking!
-                    </button>
-
-                    <button slot="ar-button" id="ar-button" style="background-color: white; border-radius: 4px; border: none; position: absolute; top: 95%; width: 100%; height: 5%; font-size:xx-large; ">
-                        View in AR Space
-                    </button>
-        </model-viewer>
+          
+            .slider {
+              width: 100%;
+              text-align: center;
+              overflow: hidden;
+              position: absolute;
+              bottom: 16px;
+            }
+          
+            .slides {
+              display: flex;
+              overflow-x: auto;
+              scroll-snap-type: x mandatory;
+              scroll-behavior: smooth;
+              -webkit-overflow-scrolling: touch;
+            }
+          
+            .slide {
+              scroll-snap-align: start;
+              flex-shrink: 0;
+              width: 100px;
+              height: 100px;
+              background-size: contain;
+              background-repeat: no-repeat;
+              background-position: center;
+              background-color: #fff;
+              margin-right: 10px;
+              border-radius: 10px;
+              border: none;
+              display: flex;
+            }
+          
+            .slide.selected {
+              border: 2px solid #4285f4;
+            }
+          
+            .slide:focus {
+              outline: none;
+            }
+          
+            .slide:focus-visible {
+              outline: 1px solid #4285f4;
+            }
+          
+          </style>
     </body>
-</html>
+</<html>
