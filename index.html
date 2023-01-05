@@ -13,7 +13,7 @@
 
                 const html5QrCode = new Html5Qrcode("reader")
                 const config = { fps: 10 }
-                html5QrCode.start({ facingMode: "user" }, config, onScanSuccess)
+                html5QrCode.start({ facingMode: "environment" }, config, onScanSuccess)
             }
         </script>
     </head>
