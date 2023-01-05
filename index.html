@@ -7,9 +7,9 @@
                 window.switchSrc = (element, name) => 
                 {
                     const base = "models3d/" + name
-                    const iosBase = "models3d/usdz/toy_robot_vintage"//"models3d/usdz/" + name
-                    modelViewer.src = base + '.glb';
-                    modelViewer.setAttribute("ios-src", iosBase + '.usdz');
+                    const iosBase = "models3d/usdz/" + name
+                    modelViewer.src = base + '.glb'
+                    modelViewer.iosSrc = iosBase + '.usdz'
                     const slides = document.querySelectorAll(".slide");
                     slides.forEach((element) => element.classList.remove("selected"))
                     element.classList.add("selected")
