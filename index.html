@@ -6,7 +6,7 @@
                 const modelViewer = document.querySelector("model-viewer");
                 window.switchSrc = (element, name) => 
                 {
-                    const base = "models3d/" + name
+                    const base = "models3d/glb/" + name
                     const iosBase = "models3d/usdz/" + name
                     modelViewer.src = base + '.glb'
                     modelViewer.iosSrc = iosBase + '.usdz'
