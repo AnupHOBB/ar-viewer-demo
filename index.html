@@ -4,10 +4,15 @@
         <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
         <script type="module">
                 const modelViewer = document.querySelector("model-viewer");
-                window.switchSrc = (element, name) => 
+                const glbfolder = "models3d/glb/"
+                const usdzfolder = "models3d/usdz/"
+                window.onload = () => swapModel(document.querySelector('.slide'),'sparkling12m')
+                window.switchSrc = swapModel
+
+                function swapModel(element, name)
                 {
-                    const base = "models3d/glb/" + name
-                    const iosBase = "models3d/usdz/" + name
+                    const base = glbfolder + name
+                    const iosBase = usdzfolder + name
                     modelViewer.src = base + '.glb'
                     modelViewer.iosSrc = iosBase + '.usdz'
                     const slides = document.querySelectorAll(".slide");
@@ -78,19 +83,17 @@
                 font-size:medium; 
             }
         </style>
-        <model-viewer src="models3d/glb/TMPL2181__SDHCSBBL_Lo_v2.glb" 
-                    ios-src="models3d/usdz/TMPL2181__SDHCSBBL_Lo_v2.usdz"
-                    style="width:100%; height:100%" 
-                    camera-controls touch-action="pan-y"
-                    ar 
-                    ar-scale="fixed">
+        <model-viewer style="width:100%; height:100%" 
+                      camera-controls touch-action="pan-y"
+                      ar 
+                      ar-scale="fixed">
                     <div class="slider">
                         <div class="slides">
                           <button class="slide" onclick="switchSrc(this, 'sparkling12m')" style="background-image: url('images/sparkling12m.png');"></button>
                           <button class="slide" onclick="switchSrc(this, 'sparkling28m')" style="background-image: url('images/sparkling28m.png');"></button>
                           <button class="slide" onclick="switchSrc(this, 'still12m')" style="background-image: url('images/still12m.png');"></button>
                           <button class="slide" onclick="switchSrc(this, 'still28m')" style="background-image: url('images/still28m.png');"></button>
-                          <button class="slide selected" onclick="switchSrc(this, 'TMPL2181__SDHCSBBL_Lo_v2')" style="background-image: url('images/TMPL2181__SDHCSBBL_Lo_v2.png');"></button>
+                          <button class="slide" onclick="switchSrc(this, 'TMPL2181__SDHCSBBL_Lo_v2')" style="background-image: url('images/TMPL2181__SDHCSBBL_Lo_v2.png');"></button>
                           <button class="slide" onclick="switchSrc(this, 'TMPL3660__KKTY3SNT')" style="background-image: url('images/TMPL3660__KKTY3SNT.png');"></button>
                         </div>
                     </div>
