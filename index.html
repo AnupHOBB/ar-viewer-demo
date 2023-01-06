@@ -3,10 +3,11 @@
     <body style="background-color: white;">
         <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
         <script type="module">
-                const models = ['sparkling12m','sparkling28m','still12m','still28m','TMPL2181__SDHCSBBL_Lo_v2','TMPL3660__KKTY3SNT']
+                const models = ['chair-1','chair-2','chair-3','hanger','mirror','rack-1','rack-2','rack-3','rack-4','sofa','stool','table-1','table-2']
                 const modelViewer = document.querySelector("model-viewer")
-                const glbfolder = "https://anuphobb.github.io/ar-viewer-demo/models3d/glb/"
-                const usdzfolder = "https://anuphobb.github.io/ar-viewer-demo/models3d/usdz/"
+                const glbfolder = "models3d/glb/"
+                const usdzfolder = "models3d/usdz/"
+                const imagesfolder = "images/"
                 window.onload = () => 
                 {
                     loadButtons()
@@ -22,7 +23,7 @@
                         let button = document.createElement('button')
                         button.className = 'slide'
                         button.setAttribute('onclick', 'switchSrc(this, "'+models[i]+'")')
-                        button.style.backgroundImage = "url('https://anuphobb.github.io/ar-viewer-demo/images/"+models[i]+".png')"
+                        button.style.backgroundImage = "url('"+imagesfolder+models[i]+".png')"
                         slides.appendChild(button)
                     }
                 }
