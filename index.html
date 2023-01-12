@@ -3,7 +3,7 @@
     <body style="background-color: white;">
         <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
         <script type="module">
-                const models = ['MultipurposeCleaner_M', 'MultipurposeCleaner_CM', 'WyzeAirPurifier', 'RuchedOttoman_M', 'RuchedOttoman_CM', 'SparklingSpringWater01234_28oz_M', 'SparklingSpringWater01234_28oz._CM', 'Shampoo', 'BottegaVeneta03_Lo']
+                const models = ['DecorItemPlant17', 'DecorItemPlant19', 'DecorItemVase', 'PinkClutch', 'TanLeatherSofa', 'WyzeAirPurifier']
                 const modelViewer = document.querySelector("model-viewer")
                 const glbfolder = "models3d/glb/"
                 const usdzfolder = "models3d/usdz/"
@@ -35,7 +35,11 @@
                     modelViewer.src = base + '.glb'
                     modelViewer.iosSrc = iosBase + '.usdz'
                     const slides = document.querySelectorAll('.slide')
-                    slides.forEach((element) => element.classList.remove('selected'))
+                    slides.forEach((element) => {
+                        element.classList.remove('selected')
+                        element.classList.add('unselected')
+                    })
+                    element.classList.remove('unselected')
                     element.classList.add('selected')
                 }
                 // Keep slider interactions from affecting the XR scene.
@@ -53,6 +57,11 @@
 
             .slides 
             {
+                border-radius: 2ch;
+                padding-left: 1ch;
+                padding-top: 1ch;
+                padding-bottom: 1ch;
+                background-color: rgba(0, 0, 0, 0.5);
                 display: flex;
                 overflow-x: auto;
                 scroll-snap-type: x mandatory;
@@ -64,12 +73,12 @@
             {
                 scroll-snap-align: start;
                 flex-shrink: 0;
-                width: 75px;
+                width: 74px;
                 height: 58px;
                 background-size: contain;
                 background-repeat: no-repeat;
                 background-position: center;
-                background-color: #4285f4;
+                background-color: #555555;/*#4285f4*/
                 margin-right: 10px;
                 border-radius: 10px;
                 border: none;
@@ -78,7 +87,12 @@
 
             .slide.selected 
             {
-                border: 2px solid #4285f4;
+                border: 2px solid #555555;
+            }
+
+            .slide.unselected 
+            {
+                border: 2px solid #999999;
             }
 
             .slide:focus 
@@ -88,7 +102,7 @@
 
             .slide:focus-visible 
             {
-                outline: 1px solid #4285f4;
+                outline: 1px solid #555555;
             }
 
             #ar-button
