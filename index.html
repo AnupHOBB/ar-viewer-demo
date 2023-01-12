@@ -35,11 +35,7 @@
                     modelViewer.src = base + '.glb'
                     modelViewer.iosSrc = iosBase + '.usdz'
                     const slides = document.querySelectorAll('.slide')
-                    slides.forEach((element) => {
-                        element.classList.remove('selected')
-                        element.classList.add('unselected')
-                    })
-                    element.classList.remove('unselected')
+                    slides.forEach((element) => element.classList.remove('selected'))
                     element.classList.add('selected')
                 }
                 // Keep slider interactions from affecting the XR scene.
@@ -57,11 +53,6 @@
 
             .slides 
             {
-                border-radius: 2ch;
-                padding-left: 1ch;
-                padding-top: 1ch;
-                padding-bottom: 1ch;
-                background-color: rgba(0, 0, 0, 0.5);
                 display: flex;
                 overflow-x: auto;
                 scroll-snap-type: x mandatory;
@@ -73,12 +64,12 @@
             {
                 scroll-snap-align: start;
                 flex-shrink: 0;
-                width: 74px;
+                width: 75px;
                 height: 58px;
                 background-size: contain;
                 background-repeat: no-repeat;
                 background-position: center;
-                background-color: #555555;/*#4285f4*/
+                background-color: #4285f4;
                 margin-right: 10px;
                 border-radius: 10px;
                 border: none;
@@ -87,12 +78,7 @@
 
             .slide.selected 
             {
-                border: 2px solid #555555;
-            }
-
-            .slide.unselected 
-            {
-                border: 2px solid #999999;
+                border: 2px solid #4285f4;
             }
 
             .slide:focus 
@@ -102,7 +88,7 @@
 
             .slide:focus-visible 
             {
-                outline: 1px solid #555555;
+                outline: 1px solid #4285f4;
             }
 
             #ar-button
